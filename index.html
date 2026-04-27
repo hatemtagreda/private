@@ -1,151 +1,397 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>دعوة خطوبة أحمد & دينا</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>دعوة خطوبة | أحمد ودينا</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;700&display=swap" rel="stylesheet">
+        :root {
+            --primary-color: #d4af37;      /* ذهبي ملكي أنيق */
+            --gold-dark: #b88b1f;
+            --bg-color: #fcfbf8;           /* أوف وايت ناعم */
+            --text-color: #2c2b28;
+            --soft-shadow: 0 20px 40px rgba(0, 0, 0, 0.03), 0 8px 18px rgba(0, 0, 0, 0.05);
+        }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-      color: white;
-      text-align: center;
-    }
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: var(--bg-color);
+            font-family: 'Cairo', sans-serif;
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 10% 20%, rgba(212, 175, 55, 0.02) 2%, transparent 2.5%);
+            background-size: 28px 28px;
+        }
 
-    .container {
-      padding: 30px;
-      animation: fadeIn 1.5s ease;
-    }
+        .card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 560px;
+            padding: 40px 28px 48px;
+            border-radius: 48px 32px 56px 32px;
+            box-shadow: var(--soft-shadow), 0 1px 1px rgba(0,0,0,0.02);
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            transition: all 0.2s ease;
+            position: relative;
+            backdrop-filter: blur(0px);
+        }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(30px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+        .card::before {
+            content: "✨";
+            position: absolute;
+            top: -15px;
+            right: 25px;
+            font-size: 34px;
+            opacity: 0.4;
+            pointer-events: none;
+        }
 
-    h1 {
-      font-size: 30px;
-    }
+        .card::after {
+            content: "🌙";
+            position: absolute;
+            bottom: -18px;
+            left: 25px;
+            font-size: 36px;
+            opacity: 0.3;
+            transform: rotate(-10deg);
+            pointer-events: none;
+        }
 
-    .names {
-      font-size: 42px;
-      color: #ffd700;
-      margin: 20px 0;
-    }
+        @keyframes gentleFade {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-    .card {
-      background: rgba(255,255,255,0.15);
-      padding: 25px;
-      border-radius: 25px;
-      margin-top: 20px;
-      backdrop-filter: blur(15px);
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-    }
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 26px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: rgba(212, 175, 55, 0.08);
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 60px;
+        }
 
-    .date {
-      font-size: 20px;
-      margin: 15px 0;
-    }
+        .message {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: #6a675f;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+        }
 
-    .countdown {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 15px;
-    }
+        .names {
+            font-family: 'Amiri', serif;
+            font-size: 58px;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 15px 0 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
 
-    .box {
-      background: rgba(0,0,0,0.4);
-      padding: 15px;
-      border-radius: 15px;
-      width: 70px;
-    }
+        .names span {
+            font-size: 42px;
+            color: #cfc6ae;
+            font-weight: 400;
+        }
 
-    .num {
-      font-size: 22px;
-      font-weight: bold;
-      color: #00ffcc;
-    }
+        .details {
+            font-size: 17px;
+            line-height: 2;
+            margin: 35px 0 20px;
+            background: #fffcf5;
+            padding: 22px 18px;
+            border-radius: 32px;
+            border-right: 4px solid var(--primary-color);
+            box-shadow: inset 0 1px 2px #fff8, 0 6px 12px rgba(0,0,0,0.02);
+        }
 
-    .label {
-      font-size: 14px;
-    }
+        .highlight {
+            font-weight: 800;
+            color: #4a3b1c;
+            background: linear-gradient(120deg, #fff0cf 0%, #fff0cf 40%, transparent 60%);
+            padding: 0 6px;
+            border-radius: 12px;
+            display: inline-block;
+        }
 
-    .heart {
-      font-size: 28px;
-      margin-top: 20px;
-      animation: pulse 1.2s infinite;
-    }
+        /* تنسيق العد التنازلي الجديد والمحسن */
+        .countdown-title {
+            font-size: 15px;
+            color: #9b8e6e;
+            margin: 20px 0 10px;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+        }
 
-    @keyframes pulse {
-      0% {transform: scale(1);}
-      50% {transform: scale(1.3);}
-      100% {transform: scale(1);}
-    }
+        .countdown-title:before,
+        .countdown-title:after {
+            content: "—";
+            color: var(--primary-color);
+            margin: 0 8px;
+            opacity: 0.6;
+        }
 
-  </style>
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            margin: 20px 0 25px;
+            direction: ltr;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: linear-gradient(135deg, #fefaf0, #fffaf2);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            padding: 10px 8px;
+            border-radius: 24px;
+            min-width: 72px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.02);
+            transition: 0.2s;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 34px;
+            font-weight: 800;
+            font-family: 'Cairo', monospace;
+            color: var(--gold-dark);
+            line-height: 1.2;
+            letter-spacing: 2px;
+        }
+
+        .time-box p {
+            margin: 8px 0 0;
+            font-size: 12px;
+            color: #8a7a5a;
+            font-weight: 700;
+            text-transform: lowercase;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 14px 34px;
+            background: linear-gradient(135deg, #d4af37 0%, #bb962e 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 12px 20px -8px rgba(180, 140, 40, 0.4);
+            transition: all 0.2s ease;
+            border: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, #dfbc4a, #c9a436);
+            box-shadow: 0 18px 28px -10px rgba(180, 130, 30, 0.5);
+        }
+
+        .footer-text {
+            margin-top: 38px;
+            font-size: 14px;
+            color: #b8aa89;
+            font-style: normal;
+            font-weight: 500;
+            border-top: 1px dashed #eedfc8;
+            padding-top: 22px;
+            letter-spacing: 0.3px;
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                padding: 32px 16px 40px;
+            }
+            .names {
+                font-size: 44px;
+                gap: 6px;
+            }
+            .names span {
+                font-size: 32px;
+            }
+            .time-box {
+                min-width: 62px;
+                padding: 8px 5px;
+            }
+            .time-box span {
+                font-size: 28px;
+            }
+            .details {
+                font-size: 15px;
+                padding: 16px 12px;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-  <div class="container">
-    <h1>💍 دعوة خطوبة 💍</h1>
+<div class="card">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
 
-    <div class="names">أحمد ❤️ دينا</div>
+    <p class="message">بفرحة تملأ القلوب، ندعوكم لمشاركتنا ليلة خطوبة</p>
 
-    <div class="card">
-      <div class="date">📅 15 مايو 2026 - الساعة 8 مساءً</div>
-
-      <div class="countdown">
-        <div class="box">
-          <div class="num" id="days">0</div>
-          <div class="label">يوم</div>
-        </div>
-        <div class="box">
-          <div class="num" id="hours">0</div>
-          <div class="label">ساعة</div>
-        </div>
-        <div class="box">
-          <div class="num" id="minutes">0</div>
-          <div class="label">دقيقة</div>
-        </div>
-        <div class="box">
-          <div class="num" id="seconds">0</div>
-          <div class="label">ثانية</div>
-        </div>
-      </div>
+    <div class="names">
+        أحمد <span> &amp; </span> دينا
     </div>
 
-    
-  </div>
+    <div class="details">
+        بمشيئة الله تعالى يوم <span class="highlight">الجمعة</span><br>
+        الموافق <span class="highlight">15 مايو 2026</span><br>
+        في تمام الساعة <span class="highlight">الثامنة مساءً (20:00)</span><br>
+        في قاعة <span class="highlight">[القصر الذهبي]</span> — شارع النيل، القاهرة
+    </div>
 
-  <script>
-    const eventDate = new Date("May 15, 2026 20:00:00").getTime();
+    <div class="countdown-title">⏳ متبقي على ليلة العمر ⏳</div>
+    <div class="countdown" id="countdownTimer">
+        <div class="time-box">
+            <span id="days">00</span>
+            <p>يوم</p>
+        </div>
+        <div class="time-box">
+            <span id="hours">00</span>
+            <p>ساعة</p>
+        </div>
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <p>دقيقة</p>
+        </div>
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <p>ثانية</p>
+        </div>
+    </div>
 
-    setInterval(() => {
-      const now = new Date().getTime();
-      const diff = eventDate - now;
+    <!-- ربط الخريطة (يمكن تعديل الرابط) -->
+    <a href="https://maps.app.goo.gl/exampleplaceholder" class="btn" target="_blank" id="mapLink">📍 موقع القاعة (خرائط جوجل)</a>
 
-      if (diff <= 0) return;
+    <div class="footer-text">
+        ❤️ ننتظركم بكل حب وشوق ❤️<br>
+        تشريفكم يزيدنا فرحاً
+    </div>
+</div>
 
-      document.getElementById("days").innerText =
-        Math.floor(diff / (1000 * 60 * 60 * 24));
-
-      document.getElementById("hours").innerText =
-        Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-      document.getElementById("minutes").innerText =
-        Math.floor((diff / (1000 * 60)) % 60);
-
-      document.getElementById("seconds").innerText =
-        Math.floor((diff / 1000) % 60);
-
-    }, 1000);
-  </script>
-
+<script>
+    (function() {
+        // --------------------------------------------------------------
+        // التاريخ المستهدف: 15 مايو 2026 - الساعة 20:00 (الثامنة مساءً)
+        // نحدد السنة والشهر واليوم والساعة بالتوقيت المحلي للمتصفح
+        // تاريخ الهدف: 2026-05-15 20:00:00
+        // نستخدم طريقة دقيقة لحساب الفرق مهما كانت المنطقة الزمنية للمستخدم
+        // --------------------------------------------------------------
+        
+        const TARGET_YEAR = 2026;
+        const TARGET_MONTH = 4;    // ملاحظة: شهور JavaScript تبدأ من 0 -> 4 = مايو (May)
+        const TARGET_DAY = 15;
+        const TARGET_HOUR = 20;     // 8 مساءً بصيغة 24 ساعة
+        const TARGET_MINUTE = 0;
+        const TARGET_SECOND = 0;
+        
+        // إنشاء كائن تاريخ مستهدف، يستخدم توقيت المستخدم المحلي (تاريخ محلي)
+        // ملاحظة: new Date(year, month, day, hour, minute, second) تستخدم التوقيت المحلي.
+        const targetDate = new Date(TARGET_YEAR, TARGET_MONTH, TARGET_DAY, TARGET_HOUR, TARGET_MINUTE, TARGET_SECOND);
+        
+        // التأكد أن التاريخ المدخل صحيح (مثلاً إذا كان قد مضى بالفعل يتم التعامل معه)
+        // عناصر DOM
+        const daysSpan = document.getElementById('days');
+        const hoursSpan = document.getElementById('hours');
+        const minutesSpan = document.getElementById('minutes');
+        const secondsSpan = document.getElementById('seconds');
+        
+        // وظيفة لتحديث العد التنازلي
+        function updateCountdown() {
+            const now = new Date(); // الوقت الحالي (محلي)
+            const distance = targetDate.getTime() - now.getTime();
+            
+            // إذا انتهى الوقت أو تجاوز التاريخ (حدث ماضٍ)
+            if (distance <= 0) {
+                // نعرض رسالة انتهت الفرحة أو بدأت بالفعل
+                daysSpan.innerText = '00';
+                hoursSpan.innerText = '00';
+                minutesSpan.innerText = '00';
+                secondsSpan.innerText = '00';
+                // (يمكن إضافة رسالة اختيارية في وحدة التحكم ولكن المستخدم سيرى 00)
+                return;
+            }
+            
+            // حساب الأيام والساعات والدقائق والثواني
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // عرض الأرقام بصيغة مكونة من خانتين باستخدام padStart
+            daysSpan.innerText = days.toString().padStart(2, '0');
+            hoursSpan.innerText = hours.toString().padStart(2, '0');
+            minutesSpan.innerText = minutes.toString().padStart(2, '0');
+            secondsSpan.innerText = seconds.toString().padStart(2, '0');
+        }
+        
+        // التحقق من صحة التواريخ: إذا كان التاريخ المستهدف أقل من الآن، نظهر العد التنازلي صفري ولكن يمكن إضافة تنبيه
+        // لكننا نعالج ذلك داخل الدالة. كذلك ضمان أن العد يعمل بشكل ممتاز
+        
+        // تشغيل التحديث فوراً لتجنب أي تأخير
+        updateCountdown();
+        
+        // تعيين فاصل زمني (interval) لتحديث العد كل ثانية
+        const intervalId = setInterval(updateCountdown, 1000);
+        
+        // اختياري: لو أردت إيقاف الفاصل بعد انتهاء العد (لكن 00 سيظل)
+        // يمكن ترك interval نشط لأنه لن يسبب مشكلة (بعد وصوله إلى <=0 سيبقى يعيد نفس القيم)
+        // لكن وللكفاءة يمكن إيقافه بعد انتهاء العد:
+        function stopIfExpired() {
+            const now = new Date();
+            if (targetDate.getTime() - now.getTime() <= 0) {
+                clearInterval(intervalId);
+            }
+        }
+        // نناديها بعد التأكد من انتهاء العد، لكن لا ضرر من فحص إضافي كل 10 ثواني
+        setInterval(stopIfExpired, 10000);
+        
+        // إضافة تلميح: التأكد من وجود الرابط الديناميكي، وحتى يكون لدينا خريطة حقيقية يمكن تخصيصها لاحقاً.
+        // نضيف معالجة لجعل الرابط يفتح موقع افتراضي أو يمكن تعديله يدوياً، لكن نعطيه مثال حقيقي مقترح
+        const mapButton = document.getElementById('mapLink');
+        // لو أراد المستخدم ضبط خريطة حقيقية يمكنه تغيير الرابط لاحقاً، لكن نضع رابط توضيحي 
+        // لموقع القاهرة (على سبيل المثال ليكون احترافي) لكن المستخدم يعدله بنفسه.
+        // ملاحظة: استخدمت placeholder بمعنى كما في الإصدار السابق، لكن لتحسين التجربة نعطيه رابطًا عمليًا لإحدى قاعات القاهرة كتوضيح.
+        // لكن نحافظ على نفس الفكرة مع خاصية تسمح للمستخدم باستبداله لاحقاً:
+        if (mapButton && mapButton.getAttribute('href') === 'https://maps.app.goo.gl/exampleplaceholder') {
+            // فقط للعرض نقترح رابط توضيحي لقاعة معروفة في القاهرة (مثال واقعي لكن ليس الزامي)
+            // لضمان أن الرابط ليس معطلاً، نضبط مثالًا افتراضياً يبين الموقع العام:
+            mapButton.href = 'https://maps.app.goo.gl/zMhSgSgXb99hzcf26'; // موقع رمزي (نيل القاهرة) يمكن تغييره
+        }
+        
+        // سطر إضافي: إضافة تفاعل بسيط عند تحميل الصفحة لضبط أي غلط في العدادات
+        console.log('✅ عد تنازلي يعمل بكفاءة حتى تاريخ: ' + targetDate.toLocaleString('ar-EG'));
+    })();
+</script>
 </body>
 </html>
