@@ -135,7 +135,18 @@
             display: inline-block;
         }
 
-        /* تنسيق العد التنازلي الجديد والمحسن */
+        .venue-name {
+            font-weight: 800;
+            color: #b8860b;
+            font-size: 18px;
+            background: rgba(212, 175, 55, 0.12);
+            padding: 4px 12px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+        /* تنسيق العد التنازلي */
         .countdown-title {
             font-size: 15px;
             color: #9b8e6e;
@@ -264,13 +275,13 @@
     </div>
 
     <div class="details">
-        بمشيئة الله تعالى يوم <span class="highlight">الجمعة</span><br>
-        الموافق <span class="highlight">15 مايو 2026</span><br>
-        في تمام الساعة <span class="highlight">الثامنة مساءً (20:00)</span><br>
-        في قاعة <span class="highlight">[القصر الذهبي]</span> — شارع النيل، القاهرة
+        🗓️ بمشيئة الله تعالى يوم <span class="highlight">الجمعة</span><br>
+        📅 الموافق <span class="highlight">15 مايو 2026</span><br>
+        ⏰ في تمام الساعة <span class="highlight">السابعة مساءً (7:00 PM)</span><br>
+        📍 في قاعة <span class="venue-name">☕ Café Bing Bong, Blaza Strip</span>
     </div>
 
-    <div class="countdown-title">⏳ متبقي على ليلة العمر ⏳</div>
+    <div class="countdown-title">⏳ متبقي على الفرحة ⏳</div>
     <div class="countdown" id="countdownTimer">
         <div class="time-box">
             <span id="days">00</span>
@@ -290,107 +301,87 @@
         </div>
     </div>
 
-    <!-- ربط الخريطة (يمكن تعديل الرابط) -->
-    <a href="https://maps.app.goo.gl/exampleplaceholder" class="btn" target="_blank" id="mapLink">📍 موقع القاعة (خرائط جوجل)</a>
+    <!-- رابط الخريطة المحدد من قبل المستخدم -->
+    <a href="https://maps.app.goo.gl/Jqud9o8Ls3tQxvhh6?g_st=ac" class="btn" target="_blank" id="mapLink">📍 موقع القاعة على خرائط جوجل</a>
 
     <div class="footer-text">
-        ❤️ ننتظركم بكل حب وشوق ❤️<br>
-        تشريفكم يزيدنا فرحاً
+        ❤️ تشريفكم يزيدنا فرحاً .. ننتظركم بكل الحب ❤️
     </div>
 </div>
 
 <script>
     (function() {
         // --------------------------------------------------------------
-        // التاريخ المستهدف: 15 مايو 2026 - الساعة 20:00 (الثامنة مساءً)
-        // نحدد السنة والشهر واليوم والساعة بالتوقيت المحلي للمتصفح
-        // تاريخ الهدف: 2026-05-15 20:00:00
-        // نستخدم طريقة دقيقة لحساب الفرق مهما كانت المنطقة الزمنية للمستخدم
+        // التاريخ المستهدف: 15 مايو 2026 - الساعة 7:00 مساءً (19:00)
+        // استناداً إلى بيانات الدعوة: FRIDAY | MAY 15 | 7:00 PM
         // --------------------------------------------------------------
         
         const TARGET_YEAR = 2026;
-        const TARGET_MONTH = 4;    // ملاحظة: شهور JavaScript تبدأ من 0 -> 4 = مايو (May)
+        const TARGET_MONTH = 4;    // 4 = مايو (May) لأن يناير = 0
         const TARGET_DAY = 15;
-        const TARGET_HOUR = 20;     // 8 مساءً بصيغة 24 ساعة
+        const TARGET_HOUR = 19;     // 7:00 PM بصيغة 24 ساعة
         const TARGET_MINUTE = 0;
         const TARGET_SECOND = 0;
         
-        // إنشاء كائن تاريخ مستهدف، يستخدم توقيت المستخدم المحلي (تاريخ محلي)
-        // ملاحظة: new Date(year, month, day, hour, minute, second) تستخدم التوقيت المحلي.
+        // إنشاء كائن تاريخ مستهدف باستخدام التوقيت المحلي (تاريخ وساعة محلية)
         const targetDate = new Date(TARGET_YEAR, TARGET_MONTH, TARGET_DAY, TARGET_HOUR, TARGET_MINUTE, TARGET_SECOND);
         
-        // التأكد أن التاريخ المدخل صحيح (مثلاً إذا كان قد مضى بالفعل يتم التعامل معه)
-        // عناصر DOM
+        // عناصر DOM الخاصة بالعد التنازلي
         const daysSpan = document.getElementById('days');
         const hoursSpan = document.getElementById('hours');
         const minutesSpan = document.getElementById('minutes');
         const secondsSpan = document.getElementById('seconds');
         
-        // وظيفة لتحديث العد التنازلي
+        // وظيفة تحديث العد التنازلي
         function updateCountdown() {
             const now = new Date(); // الوقت الحالي (محلي)
             const distance = targetDate.getTime() - now.getTime();
             
-            // إذا انتهى الوقت أو تجاوز التاريخ (حدث ماضٍ)
+            // إذا انتهى الوقت أو تم تجاوز التاريخ
             if (distance <= 0) {
-                // نعرض رسالة انتهت الفرحة أو بدأت بالفعل
                 daysSpan.innerText = '00';
                 hoursSpan.innerText = '00';
                 minutesSpan.innerText = '00';
                 secondsSpan.innerText = '00';
-                // (يمكن إضافة رسالة اختيارية في وحدة التحكم ولكن المستخدم سيرى 00)
                 return;
             }
             
-            // حساب الأيام والساعات والدقائق والثواني
+            // حساب المكونات
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            // عرض الأرقام بصيغة مكونة من خانتين باستخدام padStart
+            // عرض الأرقام مع صفر في البداية (تنسيق خانتين)
             daysSpan.innerText = days.toString().padStart(2, '0');
             hoursSpan.innerText = hours.toString().padStart(2, '0');
             minutesSpan.innerText = minutes.toString().padStart(2, '0');
             secondsSpan.innerText = seconds.toString().padStart(2, '0');
         }
         
-        // التحقق من صحة التواريخ: إذا كان التاريخ المستهدف أقل من الآن، نظهر العد التنازلي صفري ولكن يمكن إضافة تنبيه
-        // لكننا نعالج ذلك داخل الدالة. كذلك ضمان أن العد يعمل بشكل ممتاز
-        
-        // تشغيل التحديث فوراً لتجنب أي تأخير
+        // تشغيل التحديث فوراً ثم كل ثانية
         updateCountdown();
-        
-        // تعيين فاصل زمني (interval) لتحديث العد كل ثانية
         const intervalId = setInterval(updateCountdown, 1000);
         
-        // اختياري: لو أردت إيقاف الفاصل بعد انتهاء العد (لكن 00 سيظل)
-        // يمكن ترك interval نشط لأنه لن يسبب مشكلة (بعد وصوله إلى <=0 سيبقى يعيد نفس القيم)
-        // لكن وللكفاءة يمكن إيقافه بعد انتهاء العد:
+        // إيقاف الفاصل بعد انتهاء التاريخ مباشرة لتوفير الموارد (اختياري)
         function stopIfExpired() {
             const now = new Date();
             if (targetDate.getTime() - now.getTime() <= 0) {
                 clearInterval(intervalId);
             }
         }
-        // نناديها بعد التأكد من انتهاء العد، لكن لا ضرر من فحص إضافي كل 10 ثواني
         setInterval(stopIfExpired, 10000);
         
-        // إضافة تلميح: التأكد من وجود الرابط الديناميكي، وحتى يكون لدينا خريطة حقيقية يمكن تخصيصها لاحقاً.
-        // نضيف معالجة لجعل الرابط يفتح موقع افتراضي أو يمكن تعديله يدوياً، لكن نعطيه مثال حقيقي مقترح
-        const mapButton = document.getElementById('mapLink');
-        // لو أراد المستخدم ضبط خريطة حقيقية يمكنه تغيير الرابط لاحقاً، لكن نضع رابط توضيحي 
-        // لموقع القاهرة (على سبيل المثال ليكون احترافي) لكن المستخدم يعدله بنفسه.
-        // ملاحظة: استخدمت placeholder بمعنى كما في الإصدار السابق، لكن لتحسين التجربة نعطيه رابطًا عمليًا لإحدى قاعات القاهرة كتوضيح.
-        // لكن نحافظ على نفس الفكرة مع خاصية تسمح للمستخدم باستبداله لاحقاً:
-        if (mapButton && mapButton.getAttribute('href') === 'https://maps.app.goo.gl/exampleplaceholder') {
-            // فقط للعرض نقترح رابط توضيحي لقاعة معروفة في القاهرة (مثال واقعي لكن ليس الزامي)
-            // لضمان أن الرابط ليس معطلاً، نضبط مثالًا افتراضياً يبين الموقع العام:
-            mapButton.href = 'https://maps.app.goo.gl/zMhSgSgXb99hzcf26'; // موقع رمزي (نيل القاهرة) يمكن تغييره
+        // التأكد من أن رابط الخريطة يعمل بشكل صحيح (تم تعيينه مسبقاً من خلال href)
+        // نضيف تفاعل بسيط للرابط لفتح الخريطة في تبويب جديد (يتم التعامل عبر المتصفح)
+        const mapBtn = document.getElementById('mapLink');
+        if (mapBtn && mapBtn.href && mapBtn.href.includes('Jqud9o8Ls3tQxvhh6')) {
+            // الرابط صحيح كما أرسله المستخدم
+            console.log("✅ رابط الخريطة تم ضبطه بنجاح: Café Bing Bong, Blaza Strip");
         }
         
-        // سطر إضافي: إضافة تفاعل بسيط عند تحميل الصفحة لضبط أي غلط في العدادات
-        console.log('✅ عد تنازلي يعمل بكفاءة حتى تاريخ: ' + targetDate.toLocaleString('ar-EG'));
+        // طباعة في وحدة التحكم تأكيداً للعد التنازلي
+        console.log('✅ العد التنازلي يعمل بكفاءة حتى تاريخ: ' + targetDate.toLocaleString('ar-EG') + ' (7:00 مساءً)');
     })();
 </script>
 </body>
